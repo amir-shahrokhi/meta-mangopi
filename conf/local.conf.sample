@@ -33,7 +33,7 @@
 #MACHINE ?= "genericx86-64"
 #MACHINE ?= "edgerouter"
 #
-# This sets the default machine to be qemux86-64 if no other machine is selected:
+# This sets the default machine to be mangopi-mq if no other machine is selected:
 MACHINE ??= "mangopi-mq"
 
 #
@@ -47,7 +47,7 @@ MACHINE ??= "mangopi-mq"
 #
 # The default is a downloads directory under TOPDIR which is the build directory.
 #
-DL_DIR ?= "${TOPDIR}/../downloads"
+DL_DIR ?= "${TOPDIR}/../../shared-downloads"
 
 #
 # Where to place shared-state files
@@ -63,7 +63,7 @@ DL_DIR ?= "${TOPDIR}/../downloads"
 #
 # The default is a sstate-cache directory under TOPDIR.
 #
-SSTATE_DIR ?= "${TOPDIR}/../sstate-cache"
+SSTATE_DIR ?= "${TOPDIR}/../../shared-sstate-cache"
 
 #
 # Where to place the build output
