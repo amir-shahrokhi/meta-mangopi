@@ -9,8 +9,8 @@ BBLAYERS ?= " \
   ##OEROOT##/../poky/meta \
   ##OEROOT##/../poky/meta-poky \
   ##OEROOT##/../poky/meta-yocto-bsp \
-  ##OEROOT##/../poky/meta-mangopi \
-  ##OEROOT##/../poky/meta-arm/meta-arm-toolchain \
-  ##OEROOT##/../poky/meta-openembedded/meta-oe \
-  ##OEROOT##/../poky/meta-qt5 \
+  ##OEROOT##/../meta-mangopi \
+  ##OEROOT##/../meta-arm/meta-arm-toolchain \
+  ##OEROOT##/../meta-openembedded/meta-oe \
+  ##OEROOT##/../meta-qt5 \
 "

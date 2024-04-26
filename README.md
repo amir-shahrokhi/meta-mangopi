@@ -1,6 +1,8 @@
-# Introduction 
+# Introduction
+
 This is BSP layer for [Mangopi-MQ](https://mangopi.org/mangopi_mq) which uses _T113-S3_ SoC.
 Following preipherals are working and tested
+
 1. `TCON` with `RGB` interface (default to 800x480)
 2. `CAN0`
 3. `USB-OTG` in device mode only (default to `ecm`, `acm` gadget)
@@ -8,39 +10,52 @@ Following preipherals are working and tested
 5. `WiFi`
 
 # Getting started
-1. Clone required layers:
+
+1. Create project directory and clone required layers:
+
 ```bash
+mkdir mangopi-project
+cd mangopi-project
+
 git clone git://git.yoctoproject.org/poky -b dunfell
-cd poky/
 git clone git://git.yoctoproject.org/meta-arm -b dunfell
 git clone https://github.com/openembedded/meta-openembedded.git -b dunfell
 git clone https://github.com/meta-qt5/meta-qt5.git -b dunfell
-git clone https://github.com/ArashEM/meta-mangopi.git -b dunfell
-cd ../
+git clone https://github.com/amir-shahrokhi/meta-mangopi.git -b dunfell
 ```
+
 2. Export template configuraiton path and initialize build envrionment
+
 ```bash
-export TEMPLATECONF=${TEMPLATECONF:-meta-mangopi/conf}
-source poky/oe-init-build-env mangopi-mq
+export TEMPLATECONF=${TEMPLATECONF:-../meta-mangopi/conf}
+source poky/oe-init-build-env
 ```
+
 3. Start build process
+
 ```bash
 bitbake qt5-image
 bitbake -c do_populate_sdk qt5-image
 ```
+
 4. Flash `wic` image into your SD card
+
 ```bash
 sudo dd if=tmp/deploy/images/mangopi-mq/qt5-image-mangopi-mq.wic of=/dev/sdX
 ```
+
 5. Enjoy :-)
 
 # View
+
 Here is what it looks like (using 800x480 LCD)
 ![POKY](docs/poky.jpg)
 
 # ToDo
+
 1. There is no driver for `TPADC`. So with current LCD (40pin FPC with integrated resistive touch scree) touch screen is not available (for now!)
 2. Enabling `tve` causes issue with `RGB` interface. When `tve` was enabled, `RGB` interface size and referesh rate was not correct. For example enabling `tve` make display pipeline like this
+
 ```
 root@mangopi-mq:/sys/kernel/debug/dri/0# cat state
 plane[31]: plane-0
@@ -141,8 +156,10 @@ connector[52]: Composite-1
         max_requested_bpc=0
         colorspace=Default
 ```
+
 Not to the `crtc-1`.
 But after disabling `tve`, I got this
+
 ```
 root@mangopi-mq:/sys/kernel/debug/dri/0# cat state
 plane[31]: plane-0
@@ -222,5 +239,7 @@ connector[43]: Unknown-1
         colorspace=Default
 
 ```
+
 # More
-I want to thanks all contributors of [AWboot](https://github.com/szemzoa/awboot). Their bootloader and kernel patches are directly used in this layer. 
+
+I want to thanks all contributors of [AWboot](https://github.com/szemzoa/awboot). Their bootloader and kernel patches are directly used in this layer.
