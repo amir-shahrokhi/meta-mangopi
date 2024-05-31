@@ -13,15 +13,16 @@ index 589a1ce..722969d 100644
  	sun8i-v3s-licheepi-zero.dtb \
 
 diff --git a/arch/arm/boot/dts/allwinner/sun8i-t113s.dtsi b/arch/arm/boot/dts/allwinner/sun8i-t113s.dtsi
-index 804aa19..9d5eaff 100644
+index c7181308ae6f..802e30ea0a2a 100644
 --- a/arch/arm/boot/dts/allwinner/sun8i-t113s.dtsi
 +++ b/arch/arm/boot/dts/allwinner/sun8i-t113s.dtsi
-@@ -1,59 +1,1349 @@
- // SPDX-License-Identifier: (GPL-2.0+ or MIT)
+@@ -1,59 +1,1351 @@
+-// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 -// Copyright (C) 2022 Arm Ltd.
--
--#define SOC_PERIPHERAL_IRQ(nr) GIC_SPI nr
++// SPDX-License-Identifier: (GPL-2.0+ or MIT)
 +// Copyright (C) 2021-2022 Samuel Holland <samuel@sholland.org>
+ 
+ #define SOC_PERIPHERAL_IRQ(nr) GIC_SPI nr
  
 +#include <dt-bindings/clock/sun6i-rtc.h>
 +#include <dt-bindings/clock/sun8i-de2.h>
@@ -358,7 +359,7 @@ index 804aa19..9d5eaff 100644
 +				function = "can1";
 +				drive-strength = <10>;
 +				bias-pull-up;
-+			};		
++			};
 +		};
 +
 +		pwm: pwm@2000c00 {
@@ -775,7 +776,7 @@ index 804aa19..9d5eaff 100644
 +			clocks = <&ccu CLK_BUS_MSGBOX0>;
 +			resets = <&ccu RST_BUS_MSGBOX0>;
 +			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>,
-+		    		     <GIC_SPI 130 IRQ_TYPE_LEVEL_HIGH>;
++						 <GIC_SPI 130 IRQ_TYPE_LEVEL_HIGH>;
 +			interrupt-names = "rx", "tx";
 +			#mbox-cells = <2>;
 +		};
@@ -787,7 +788,7 @@ index 804aa19..9d5eaff 100644
 +			clocks = <&ccu CLK_BUS_MSGBOX1>;
 +			resets = <&ccu RST_BUS_MSGBOX1>;
 +			interrupts = <139 IRQ_TYPE_LEVEL_HIGH>,
-+		    		     <140 IRQ_TYPE_LEVEL_HIGH>;
++						 <140 IRQ_TYPE_LEVEL_HIGH>;
 +			interrupt-names = "rx", "tx";
 +			#mbox-cells = <2>;
 +		};
@@ -836,7 +837,7 @@ index 804aa19..9d5eaff 100644
 +				 <&ccu CLK_MBUS_CE>,
 +				 <&rtc CLK_IOSC>;
 +
-+			clock-names = "bus", "mod", "ram", "trng"; 
++			clock-names = "bus", "mod", "ram", "trng";
 +			resets = <&ccu RST_BUS_CE>;
 +		};
 +
@@ -1411,10 +1412,10 @@ index 804aa19..9d5eaff 100644
 
 diff --git a/arch/arm/boot/dts/allwinner/sun8i-t113-mangopi-dual.dts b/arch/arm/boot/dts/allwinner/sun8i-t113-mangopi-dual.dts
 new file mode 100644
-index 0000000..35d67c7
+index 000000000000..612fd60a26d8
 --- /dev/null
 +++ b/arch/arm/boot/dts/allwinner/sun8i-t113-mangopi-dual.dts
-@@ -0,0 +1,385 @@
+@@ -0,0 +1,384 @@
 +// SPDX-License-Identifier: (GPL-2.0+ or MIT)
 +// Copyright (C) 2022 Samuel Holland <samuel@sholland.org>
 +
@@ -1528,9 +1529,9 @@ index 0000000..35d67c7
 +
 +    vdd_bl: regulator@0 {
 +	    compatible = "regulator-fixed";
-+    	regulator-name = "bl-3v3";
-+    	regulator-min-microvolt = <3300000>;
-+    	regulator-max-microvolt = <3300000>;
++	    regulator-name = "bl-3v3";
++	    regulator-min-microvolt = <3300000>;
++	    regulator-max-microvolt = <3300000>;
 +	    regulator-always-on;
 +    };
 +
@@ -1542,7 +1543,7 @@ index 0000000..35d67c7
 +
 +	    port@0 {
 +			    reg = <0>;
-+		    	#address-cells = <1>;
++			    #address-cells = <1>;
 +			    #size-cells = <0>;
 +
 +			    panel_input: endpoint@0 {
@@ -1610,7 +1611,7 @@ index 0000000..35d67c7
 +		function = "can1";
 +		drive-strength = <10>;
 +		bias-pull-up;
-+	};		
++	};
 +
 +	uart5_pb4_pins: uart5-pb4-pins {
 +	    pins = "PB4", "PB5";
@@ -1724,7 +1725,7 @@ index 0000000..35d67c7
 +&codec {
 +	routing = "Headphone Jack", "HPOUTL",
 +		  "Headphone Jack", "HPOUTR",
-+		  "Headset Microphone", "MICIN3"; 
++		  "Headset Microphone", "MICIN3";
 +
 +/*		  "LINEINL", "HPOUTL",
 +		  "LINEINR", "HPOUTR";
@@ -1799,4 +1800,3 @@ index 0000000..35d67c7
 +	pinctrl-0 = <&can1_pins>;
 +	status = "disabled";
 +};
-+
