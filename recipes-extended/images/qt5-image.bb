@@ -2,6 +2,9 @@ DESCRIPTION = "Qt5 image for Mangopi-MQ board(T113)"
 
 IMAGE_FEATURES += "splash ssh-server-openssh"
 
+REQUIRED_DISTRO_FEATURES = "wayland"
+DISTRO_FEATURES_remove = " x11 "
+
 IMAGE_INSTALL = "\
     packagegroup-core-boot \
     packagegroup-core-full-cmdline \
@@ -90,6 +93,8 @@ IMAGE_INSTALL += " \
     ${FB_TOOLS} \
     ${MISC_TOOLS} \
 "
+
+IMAGE_INSTALL += "weston weston-init"
 
 set_8189fs_loglevel(){
     mkdir -p ${IMAGE_ROOTFS}/etc/modprobe.d
